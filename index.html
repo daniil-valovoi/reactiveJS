@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            display: block;
+        }
+
+        /* Shopping Cart Styles */
+        #shopping-cart {
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+            max-width: 600px;
+        }
+
+        #shopping-cart h2 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        .cart-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        #product-select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            flex: 1;
+        }
+
+        .cart-controls button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .cart-controls button:hover {
+            background-color: #0056b3;
+        }
+
+        #cart-items {
+            margin: 20px 0;
+            min-height: 100px;
+            background: white;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #fafafa;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-info {
+            display: flex;
+            gap: 15px;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .item-name {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .item-price {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qty-btn {
+            width: 28px;
+            height: 28px;
+            padding: 0;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .qty-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        .qty-display {
+            min-width: 25px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .remove-btn {
+            padding: 4px 10px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .remove-btn:hover {
+            background-color: #c82333;
+        }
+
+        .item-total {
+            color: #28a745;
+            font-weight: bold;
+            min-width: 120px;
+            text-align: right;
+        }
+
+        .cart-summary {
+            background: #e7f3ff;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        .cart-summary p {
+            margin: 8px 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .cart-summary strong {
+            color: #007bff;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        The count is: <span id="counter"></span>
+        <button id="increase">Click a button to increase the count</button>
+        <button id="decrease">Click a button to decrease the count</button>
+        <button id="reset">Click a button to reset the count</button>
+        <progress id="progress" max="100" value="0" data-reactive-attribute-name="value"></progress>
+        <button id="increase-progress">Increase progress</button>
+        <button id="decrease-progress">Decrease progress</button>
+        <button id="reset-progress">Reset progress</button>
+        <ul id="list"></ul>
+        <button id="randomise-list">Randomise list</button>
+
+        <div id="shopping-cart">
+            <h2>🛒 Shopping Cart</h2>
+            <div class="cart-controls">
+                <select id="product-select">
+                    <option value="0">Add a product...</option>
+                    <option value="1">Laptop - $999</option>
+                    <option value="2">Mouse - $25</option>
+                    <option value="3">Keyboard - $75</option>
+                    <option value="4">Monitor - $299</option>
+                    <option value="5">Headphones - $150</option>
+                </select>
+                <button id="clear-cart">Clear Cart</button>
+            </div>
+            <div id="cart-items"></div>
+            <div class="cart-summary">
+                <div class="summary-item">
+                    <span>Total Items:</span>
+                    <strong id="item-count">0</strong>
+                </div>
+                <div class="summary-item">
+                    <span>Total Price:</span>
+                    <strong>$<span id="total-price">0</span></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="reactive.js"></script>
+    <script src="counter.js"></script>
+    <script src="progress-bar.js"></script>
+    <script src="list.js"></script>
+    <script src="shopping-cart.js"></script>
+</body>
+
+</html>
