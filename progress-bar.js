@@ -1,8 +1,6 @@
-// ID is a temporary solution
-const [progress, progressId, setProgress] = useState(0);
+const [progress, setProgress] = useState(0);
 
-document.getElementById('progress').setAttribute('value', progress());
-document.getElementById('progress').setAttribute('data-reactive-id', progressId);
+const progressBarRef = document.getElementById('progress');
 
 document.getElementById('increase-progress').onclick = () => {
     if (progress() < 100) {
@@ -19,3 +17,11 @@ document.getElementById('decrease-progress').onclick = () => {
 document.getElementById('reset-progress').onclick = () => {
     setProgress(0);
 }
+
+// we subscribe to 'progress' variable update, and pass a callback which accepts an array of deps passed in the same order, and destructurises them
+// so we don't pass the primitive into a callback, but a reference to the dependency which will be passed
+
+//upd: multiple deps and callbacks will be supported later. just one for now
+subscribe(progress, (progress) => {
+    progressBarRef.setAttribute('value', progress);
+});
