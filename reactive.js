@@ -133,4 +133,5 @@ const subscribe = (dep, callback) => {
     }
 
     subscribers[dep.id].push(callback);
+    callback(dep.value);
 }
